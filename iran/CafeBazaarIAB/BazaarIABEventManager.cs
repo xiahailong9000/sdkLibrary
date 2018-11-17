@@ -6,10 +6,8 @@ using SimpleJSON;
 
 #if UNITY_ANDROID
 
-namespace BazaarPlugin
-{
-    public class IABEventManager : AbstractManager
-    {
+namespace BazaarPlugin {
+    public class IABEventManager : AbstractManager {
         // Fired after init is called when billing is supported on the device
         public static event Action billingSupportedEvent;
 
@@ -35,23 +33,19 @@ namespace BazaarPlugin
         public static event Action<string> consumePurchaseFailedEvent;
 
 
-        static IABEventManager()
-        {
+        static IABEventManager() {
             initialize(typeof(IABEventManager));
         }
 
-        public void billingSupported(string empty)
-        {
+        public void billingSupported(string empty) {
             billingSupportedEvent.SafeInvoke();
         }
 
-        public void billingNotSupported(string error)
-        {
+        public void billingNotSupported(string error) {
             billingNotSupportedEvent.SafeInvoke(error);
         }
 
-        public void queryInventorySucceeded(string jsonStr)
-        {
+        public void queryInventorySucceeded(string jsonStr) {
             JSONNode dataNode = JSON.Parse(jsonStr);
 
             JSONArray purchasesJsonArray = dataNode["purchases"].AsArray;
@@ -63,13 +57,11 @@ namespace BazaarPlugin
             queryInventorySucceededEvent.SafeInvoke(purchases, skus);
         }
 
-        public void queryInventoryFailed(string error)
-        {
+        public void queryInventoryFailed(string error) {
             queryInventoryFailedEvent.SafeInvoke(error);
         }
 
-        public void purchaseSucceeded(string jsonStr)
-        {
+        public void purchaseSucceeded(string jsonStr) {
             JSONNode dataNode = JSON.Parse(jsonStr);
             BazaarPurchase bazaarPurchase = new BazaarPurchase();
             bazaarPurchase.fromJson(dataNode.AsObject);
@@ -77,13 +69,11 @@ namespace BazaarPlugin
             purchaseSucceededEvent.SafeInvoke(bazaarPurchase);
         }
 
-        public void purchaseFailed(string error)
-        {
+        public void purchaseFailed(string error) {
             purchaseFailedEvent.SafeInvoke(error);
         }
 
-        public void consumePurchaseSucceeded(string jsonStr)
-        {
+        public void consumePurchaseSucceeded(string jsonStr) {
             JSONNode dataNode = JSON.Parse(jsonStr);
             BazaarPurchase bazaarPurchase = new BazaarPurchase();
             bazaarPurchase.fromJson(dataNode.AsObject);
@@ -91,8 +81,7 @@ namespace BazaarPlugin
             consumePurchaseSucceededEvent.SafeInvoke(bazaarPurchase);
         }
 
-        public void consumePurchaseFailed(string error)
-        {
+        public void consumePurchaseFailed(string error) {
             consumePurchaseFailedEvent.SafeInvoke(error);
         }
 

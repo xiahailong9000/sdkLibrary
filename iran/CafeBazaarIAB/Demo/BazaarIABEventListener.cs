@@ -32,15 +32,21 @@ public class BazaarIABEventListener : MonoBehaviour {
         IABEventManager.consumePurchaseFailedEvent -= consumePurchaseFailedEvent;
     }
 
-
+    /// <summary>
+    /// 消息回调---初始化完成--
+    /// </summary>
     void billingSupportedEvent() {
-        Debug.LogError("---伊朗支付--------------计费支持事件--billingSupportedEvent");
+        Debug.LogError("---伊朗支付-----------初始化完成---计费支持事件--billingSupportedEvent");
     }
-
+    /// <summary>
+    /// 消息回调---初始化失败--
+    /// </summary>
     void billingNotSupportedEvent(string error) {
-        Debug.LogError("---伊朗支付-------------计费不支持事件---billingNotSupportedEvent:==" + error);
+        Debug.LogError("---伊朗支付----------初始化失败---计费不支持事件---billingNotSupportedEvent:==" + error);
     }
-
+    /// <summary>
+    /// 消息回调---查询清单--
+    /// </summary>
     void queryInventorySucceededEvent(List<BazaarPurchase> purchases, List<BazaarSkuInfo> skus) {
         Debug.Log(string.Format("queryInventorySucceededEvent. total purchases:=={0}, total skus: =={1}", purchases.Count, skus.Count));
 
@@ -54,7 +60,9 @@ public class BazaarIABEventListener : MonoBehaviour {
             Debug.Log(skus[i].ToString());
         }
     }
-
+    /// <summary>
+    /// 消息回调---查询清单--
+    /// </summary>
     void queryInventoryFailedEvent(string error) {
         Debug.LogError("---伊朗支付-------------查询库存败了-- -queryInventoryFailedEvent: ==" + error);
     }
