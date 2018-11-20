@@ -10,8 +10,9 @@ namespace Topifish.Analytics {
         void Start() {
             o_GoogleAnalyticsV4 = gameObject.GetComponent<GoogleAnalyticsV4_GA>();
             o_GoogleAnalyticsV4.Init("dddd");
+            o_GoogleAnalyticsV4.SetUserID("userId==hhuu-ooowww-" + Random.Range(80, 120),true,5);
             logButton.onClick.AddListener(delegate () {
-                o_GoogleAnalyticsV4.LogException("dddddddddddddddddddddd");
+                o_GoogleAnalyticsV4.LogException("测试--uuwww-"+ Random.Range(800, 12000));
             });
         }
         void Update() {

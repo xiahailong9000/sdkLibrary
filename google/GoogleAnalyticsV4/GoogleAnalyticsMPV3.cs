@@ -1,4 +1,4 @@
-/*
+ï»¿/*
   Copyright 2014 Google Inc. All rights reserved.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ using System.Globalization;
   appropriate methods in this class if the application is built for platforms
   other than Android and iOS.
 
-GooGeLealTysMVPV3Ê¹ÓÃ²âÁ¿Ğ­Òé´¦Àí½¨ÖşÎïÃüÖĞ¡£¿ª·¢ÈËÔ±Ó¦¸Ãµ÷ÓÃGooGeLealTysV4ÖĞµÄ·½·¨£¬Õâ½«µ÷ÓÃ
-Èç¹ûÓ¦ÓÃ³ÌĞòÊÇÎªÆ½Ì¨¹¹½¨µÄ£¬Ôò´ËÀàÖĞµÄ·½·¨ÊÇÊÊµ±µÄ³ıÁËAndroidºÍiOSÖ®Íâ¡£
+GooGeLealTysMVPV3ä½¿ç”¨æµ‹é‡åè®®å¤„ç†å»ºç­‘ç‰©å‘½ä¸­ã€‚å¼€å‘äººå‘˜åº”è¯¥è°ƒç”¨GooGeLealTysV4ä¸­çš„æ–¹æ³•ï¼Œè¿™å°†è°ƒç”¨
+å¦‚æœåº”ç”¨ç¨‹åºæ˜¯ä¸ºå¹³å°æ„å»ºçš„ï¼Œåˆ™æ­¤ç±»ä¸­çš„æ–¹æ³•æ˜¯é€‚å½“çš„é™¤äº†Androidå’ŒiOSä¹‹å¤–ã€‚
 */
 public class GoogleAnalyticsMPV3 {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -53,13 +53,12 @@ public class GoogleAnalyticsMPV3 {
 
     public void InitializeTracker() {
         if (String.IsNullOrEmpty(trackingCode)) {
-            Debug.Log("No tracking code set for 'Other' platforms - hits will not be set");
+            Debug.Log("No tracking code set for 'Other' platforms - hits will not be set\næ²¡æœ‰ä¸ºâ€œå…¶ä»–â€å¹³å°è®¾ç½®è·Ÿè¸ªä»£ç -ç‚¹å‡»å°†ä¸ä¼šè¢«è®¾ç½®");
             trackingCodeSet = false;
             return;
         }
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.INFO)) {
-            Debug.Log("Platform is not Android or iOS - " +
-                "hits will be sent using measurement protocol.");
+            Debug.Log("Platform is not Android or iOS - hits will be sent using measurement protocol.\nå¹³å°ä¸æ˜¯Androidæˆ–iOS -ç‚¹å‡»å°†ä½¿ç”¨æµ‹é‡åè®®å‘é€");
         }
         screenRes = Screen.width + "x" + Screen.height;
 	    clientId = SystemInfo.deviceUniqueIdentifier;

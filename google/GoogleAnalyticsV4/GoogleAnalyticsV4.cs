@@ -128,7 +128,7 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
     }
 #endif
 
-    void Awake() {
+    public void S_Awake() {
         InitializeTracker();
         if (sendLaunchEvent) {
             LogEvent("Google Analytics", "Auto Instrumentation", "Game Launch", 0);
@@ -186,7 +186,7 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
             }
 
             Debug.Log("Initializing Google Analytics 0.2.");
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
             androidTracker.SetTrackingCode(androidTrackingCode);
             androidTracker.SetAppName(productName);
             androidTracker.SetBundleIdentifier(bundleIdentifier);
@@ -198,7 +198,7 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
             androidTracker.SetAdIdCollection(enableAdId);
             androidTracker.SetDryRun(dryRun);
             androidTracker.InitializeTracker();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
       iosTracker.SetTrackingCode(IOSTrackingCode);
       iosTracker.SetAppName(productName);
       iosTracker.SetBundleIdentifier(bundleIdentifier);
@@ -229,9 +229,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void SetAppLevelOptOut(bool optOut) {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.SetOptOut(optOut);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.SetOptOut(optOut);
 #else
         mpTracker.SetOptOut(optOut);
@@ -244,9 +244,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void ClearUserIDOverride() {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.ClearUserIDOverride();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.ClearUserIDOverride();
 #else
         mpTracker.ClearUserIDOverride();
@@ -255,9 +255,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void DispatchHits() {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.DispatchHits();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
   iosTracker.DispatchHits();
 #else
         //Do nothing
@@ -266,9 +266,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void StartSession() {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.StartSession();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.StartSession();
 #else
         mpTracker.StartSession();
@@ -277,9 +277,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void StopSession() {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.StopSession();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.StopSession();
 #else
         mpTracker.StopSession();
@@ -289,9 +289,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
     // Use values from Fields for the fieldName parameter ie. Fields.SCREEN_NAME
     public void SetOnTracker(Field fieldName, object value) {
         InitializeTracker();
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.SetTrackerVal(fieldName, value);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.SetTrackerVal(fieldName, value);
 #else
         mpTracker.SetTrackerVal(fieldName, value);
@@ -311,9 +311,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging screen.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogScreen(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogScreen(builder);
 #else
         mpTracker.LogScreen(builder);
@@ -339,9 +339,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging event.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogEvent(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogEvent(builder);
 #else
         mpTracker.LogEvent(builder);
@@ -374,9 +374,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging transaction.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogTransaction(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogTransaction(builder);
 #else
         mpTracker.LogTransaction(builder);
@@ -410,9 +410,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging item.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogItem(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogItem(builder);
 #else
         mpTracker.LogItem(builder);
@@ -435,9 +435,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging exception.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogException(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogException(builder);
 #else
         mpTracker.LogException(builder);
@@ -462,9 +462,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging social.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogSocial(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogSocial(builder);
 #else
         mpTracker.LogSocial(builder);
@@ -490,9 +490,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
         if (GoogleAnalyticsV4.belowThreshold(logLevel, GoogleAnalyticsV4.DebugMode.VERBOSE)) {
             Debug.Log("Logging timing.");
         }
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.LogTiming(builder);
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
     iosTracker.LogTiming(builder);
 #else
         mpTracker.LogTiming(builder);
@@ -501,9 +501,9 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
 
     public void Dispose() {
         initialized = false;
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
         androidTracker.Dispose();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
 #else
 #endif
     }

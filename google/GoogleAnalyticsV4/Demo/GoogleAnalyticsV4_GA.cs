@@ -10,7 +10,31 @@ namespace Topifish.Analytics {
         private AppViewHitBuilder _viewHitBuilder;
         private EventHitBuilder _eventHitBuilder;
         private void Awake() {
-            m_googleAnalytics = gameObject.GetComponent<GoogleAnalyticsV4>();
+            m_googleAnalytics = gameObject.AddComponent<GoogleAnalyticsV4>();
+            m_googleAnalytics.androidTrackingCode = "UA-96512667-1";
+            m_googleAnalytics.IOSTrackingCode = "UA-96512667-4";
+            m_googleAnalytics.otherTrackingCode = "UA-96512667-1";
+            m_googleAnalytics.productName = "WarOfBioech";
+            m_googleAnalytics.bundleIdentifier = "com.topifish.mech";
+            m_googleAnalytics.bundleVersion = "0.16.3.63";
+            m_googleAnalytics.dispatchPeriod = 1;
+            m_googleAnalytics.sampleFrequency = 100;
+            m_googleAnalytics.logLevel = GoogleAnalyticsV4.DebugMode.VERBOSE;
+            m_googleAnalytics.UncaughtExceptionReporting = true;
+         
+            m_googleAnalytics.sendLaunchEvent = true;
+            m_googleAnalytics.sessionTimeout = 1800;
+            m_googleAnalytics.enableAdId = true;
+
+            string key= "UA-129512846-1";
+            m_googleAnalytics.androidTrackingCode = key;
+            m_googleAnalytics.IOSTrackingCode = key;
+            m_googleAnalytics.otherTrackingCode = key;
+            m_googleAnalytics.productName = "explore005";
+            m_googleAnalytics.bundleIdentifier = "com.xia9000.test02";
+            m_googleAnalytics.bundleVersion = "0.16.03.03";
+
+            m_googleAnalytics.S_Awake();
         }
         /// 是否关闭ga统计
         public void SetDisable(bool value) {
@@ -39,7 +63,7 @@ namespace Topifish.Analytics {
             if (_isOff)
                 return;
             // 不启用ga user-id
-            //m_googleAnalytics.SetUserIDOverride(userId);
+            m_googleAnalytics.SetUserIDOverride(userId);
         }
         /// <summary>
         /// ga不统计debug流程信息
