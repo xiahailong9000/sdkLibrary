@@ -114,15 +114,15 @@ public class GoogleAnalyticsV4 : MonoBehaviour {
     public readonly static string TIMING_HIT = "createTiming";
     public readonly static string EXCEPTION_HIT = "createException";
 
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
     private GoogleAnalyticsAndroidV4 androidTracker = new GoogleAnalyticsAndroidV4();
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
   private GoogleAnalyticsiOSV3 iosTracker = new GoogleAnalyticsiOSV3();
 #else
     private GoogleAnalyticsMPV3 mpTracker = new GoogleAnalyticsMPV3();
 #endif
 
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
     public GoogleAnalyticsAndroidV4 GetTracker() {
         return androidTracker;
     }

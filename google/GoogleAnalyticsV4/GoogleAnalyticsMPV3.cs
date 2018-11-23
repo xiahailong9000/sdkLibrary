@@ -30,8 +30,8 @@ GooGeLealTysMVPV3使用测量协议处理建筑物命中。开发人员应该调
 如果应用程序是为平台构建的，则此类中的方法是适当的除了Android和iOS之外。
 */
 public class GoogleAnalyticsMPV3 {
-#if UNITY_ANDROID && !UNITY_EDITOR
-#elif UNITY_IPHONE && !UNITY_EDITOR
+#if oUNITY_ANDROID && !UNITY_EDITOR
+#elif oUNITY_IPHONE && !UNITY_EDITOR
 #else
     private string trackingCode;
     private string bundleIdentifier;
